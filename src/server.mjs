@@ -22,6 +22,7 @@ app.get("/youtube-video", async (req, res) => {
   const url = req.query.url;
 
   if (url) {
+    // If the request contain a request url
     const info = await getInfo(url);
 
     const response = {
