@@ -25,7 +25,7 @@ export async function videoDetailsAll(req, res) {
       status: "SUCCESS",
     };
 
-    console.log(response);
+    console.log("[ Requested '/youtube-video' ]: ", url);
 
     res.send(response);
   } else {
@@ -48,7 +48,7 @@ export async function videoDetails(req, res) {
       status: "SUCCESS",
     };
 
-    console.log(response);
+    console.log("[ Requested '/youtube-video/details' ]: ", url);
 
     res.send(response);
   } else {
