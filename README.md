@@ -3,11 +3,11 @@
 This is a Youtube Video Downloader API, where you can fetch info regarding youtube videos
 and their download links
 
-### `GET` `/youtube-video/:url`
+### `GET` `/youtube-video/:videoID`
 
-| Parameter | Description                                 |
-| --------- | ------------------------------------------- |
-| url       | The url link of the youtube video or the id |
+| Parameter | Description                 |
+| --------- | --------------------------- |
+| videoID   | The ID of the youtube video |
 
 ## NodeJS example with axios
 
@@ -111,7 +111,7 @@ try {
 Only `videos` in the `720p` and `360p` are provided with an audio. As other quality formats does not come with audio in the video.
 The `hasAudio` field is set to true on videos which contains audio by default.
 
-### `GET` `/youtube-video/details/:url`
+### `GET` `/youtube-video/details/:videoID`
 
 ## NodeJS example with axios
 
