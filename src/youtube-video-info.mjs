@@ -8,9 +8,15 @@ export async function getInfo(id) {
 export async function getVideoDetails(info) {
   const video_details = {
     title: info.videoDetails.title, // Title of the video
+    description: info.videoDetails.description, // This is the description of the video
+    videoUrl: info.videoDetails.video_url, // The url of video in youtube
+    videoId: info.videoDetails.videoId, // This is the id of the video
     videoLength: info.videoDetails.lengthSeconds, // Length of the video in seconds
     viewCount: info.videoDetails.viewCount, // views count
-    channelName: info.videoDetails.ownerChannelName,
+    category: info.videoDetails.category, // This is the category of the video
+    publishDate: info.videoDetails.publishDate, // This is the date at which video was published
+    ageRestricted: info.videoDetails.ageRestricted, // This is a boolean for age restriction
+    channelName: info.videoDetails.ownerChannelName, // Name of the channel
     subscriberCount: info.videoDetails.author.subscriber_count,
     thumbnails: info.videoDetails.thumbnails, // Contains a list of thumbnails
     channelUrl: info.videoDetails.author.channel_url, // Link to the channel
@@ -21,7 +27,7 @@ export async function getVideoDetails(info) {
 
 // This function returns a list of information regarding videos with info related to downloading it
 export async function getVideoLinks(info) {
-  const videos = ytdl.filterFormats(info.formats, "videoandaudio");
+  const videos = ytdl.filterFormats(info.formats, "video");
 
   const linkDetails = []; // List will contain the smae video in different formats
   videos.forEach((video) => {
@@ -32,6 +38,8 @@ export async function getVideoLinks(info) {
       url: video.url, // Video direct download url
       contentLength: video.contentLength, // The size of the video in bytes
       video_format: video.container, // The file format of the cideo
+      hasAudio: video.hasAudio, // true if the video contains audio
+      fps: video.fps,
     };
 
     linkDetails.push(api_details);
