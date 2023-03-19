@@ -3,11 +3,11 @@
 This is a Youtube Video Downloader API, where you can fetch info regarding youtube videos
 and their download links
 
-### `GET` `/youtube-video/:videoID`
+### `GET` `/youtube-video`
 
 | Parameter | Description                 |
 | --------- | --------------------------- |
-| videoID   | The ID of the youtube video |
+| url       | The ID of the youtube video |
 
 ## NodeJS example with axios
 
@@ -17,10 +17,10 @@ import axios from "axios";
 const API_URL = "http://localhost:3000/youtube-video/";
 const video_id = "jMVhxBB3l0w";
 
-const requestURL = `${API_URL}${video_id}`;
-
 try {
-  const response = await axios.get(requestURL);
+  const response = await axios.get(API_URL, {
+    params: { url: video_id },
+  });
 
   console.log(response.data);
 } catch (error) {
@@ -121,10 +121,10 @@ import axios from "axios";
 const API_URL = "http://localhost:3000/youtube-video/details";
 const video_id = "jMVhxBB3l0w";
 
-const requestURL = `${API_URL}${video_id}`;
-
 try {
-  const response = await axios.get(requestURL);
+  const response = await axios.get(API_URL, {
+    params: { url: video_id },
+  });
 
   console.log(response.data);
 } catch (error) {

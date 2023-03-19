@@ -12,7 +12,7 @@ const FAIL_NO_URL = {
 
 // This controller function sends all the details regarding a youtube video
 export async function videoDetailsAll(req, res) {
-  const url = req.params.url;
+  const url = req.url_;
 
   if (url) {
     // If the request contain a request url
@@ -40,7 +40,7 @@ export async function videoDetailsAll(req, res) {
     This controller function sends only the details of video
 */
 export async function videoDetails(req, res) {
-  const url = req.params.url;
+  const url = req.url_;
 
   if (url) {
     // If the request contain a request url
