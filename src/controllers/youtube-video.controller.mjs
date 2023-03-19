@@ -16,18 +16,21 @@ export async function videoDetailsAll(req, res) {
 
   if (url) {
     // If the request contain a request url
-    const info = await getInfo(url);
+    try {
+      const info = await getInfo(url);
 
-    const response = {
-      ...(await getVideoDetails(info)),
-      videos: await getVideoLinks(info),
-      audios: await getAudioLinks(info),
-      status: "SUCCESS",
-    };
+      const response = {
+        ...(await getVideoDetails(info)),
+        videos: await getVideoLinks(info),
+        audios: await getAudioLinks(info),
+        status: "SUCCESS",
+      };
 
-    console.log("[ Requested '/youtube-video' ]: ", url);
-
-    res.send(response);
+      console.log("[ Requested '/youtube-video' ]: ", url);
+      res.send(response);
+    } catch (error) {
+      res.send({ status: "FAILED", message: error.message });
+    }
   } else {
     res.send(FAIL_NO_URL);
   }
@@ -41,16 +44,20 @@ export async function videoDetails(req, res) {
 
   if (url) {
     // If the request contain a request url
-    const info = await getInfo(url);
+    try {
+      const info = await getInfo(url);
 
-    const response = {
-      ...(await getVideoDetails(info)),
-      status: "SUCCESS",
-    };
+      const response = {
+        ...(await getVideoDetails(info)),
+        status: "SUCCESS",
+      };
 
-    console.log("[ Requested '/youtube-video/details' ]: ", url);
+      console.log("[ Requested '/youtube-video/details' ]: ", url);
 
-    res.send(response);
+      res.send(response);
+    } catch (error) {
+      res.send({ status: "FAILED", message: error.message });
+    }
   } else {
     res.send(FAIL_NO_URL);
   }
