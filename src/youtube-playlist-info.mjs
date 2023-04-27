@@ -21,4 +21,15 @@ function showPlaylist() {
     .catch(console.error);
 }
 
-showPlaylist();
+/* Returns all the information of the playlist without pagination */
+export async function getPlaylistAllInfo(playlistId) {
+  return ytpl(playlistId, { limit: Infinity })
+    .then((playlist) => {
+      return playlist;
+    })
+    .catch((err) => err);
+}
+
+// showPlaylist();
+// getPlaylistInfo("PL4cUxeGkcC9ixPU-QkScoRBVxtPPzVjrQ");
+// getPlaylistInfo("PLlrATfBNZ98dudnM48yfGUldqGD0S4FFb");
