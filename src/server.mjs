@@ -1,12 +1,14 @@
 import express from "express";
 import cors from "cors";
+import colors from 'colors';
+import morgan from "morgan"
 // import https from "https";
 // import fs from "fs";
 
 import YoutubeVideoRouter from "./routes/youtube-video.route.mjs";
 
 const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT || 3000
 
 app.use(express.json());
 app.use(
@@ -14,8 +16,9 @@ app.use(
     origin: "*",
   })
 );
+app.use(morgan("dev"));   //* <-- Api hit detail Terminal Mein show karta hai
 
-app.use("/youtube-video", YoutubeVideoRouter);
+app.use("/youtube-video",YoutubeVideoRouter);
 
 // app.get("/download/:filename", function (req, res) {
 //   const filename = req.params.filename;
@@ -44,5 +47,5 @@ app.use("/youtube-video", YoutubeVideoRouter);
 // });
 
 app.listen(PORT, () => {
-  console.log(`Listening on PORT : ${PORT} ....`);
+  console.log(`Server Running at http://localhost:${PORT}`.bgCyan.bgGreen);
 });

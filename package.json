@@ -2,17 +2,20 @@
   "name": "youtube-downloader",
   "version": "1.0.0",
   "description": "",
-  "main": "src/server.js",
+  "main": "src/server.mjs",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node src/server.mjs"
+    "start": "node src/server.mjs",
+    "dev": "nodemon src/server.mjs"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "colors": "^1.4.0",
     "cors": "^2.8.5",
     "express": "^4.18.2",
+    "morgan": "^1.10.0",
     "ytdl-core": "^4.11.4",
     "ytpl": "^2.3.0"
   }
