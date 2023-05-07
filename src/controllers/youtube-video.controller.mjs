@@ -12,7 +12,6 @@ const FAIL_NO_URL = {
 
 //TODO This controller function sends all the details regarding a youtube video
 export async function videoDetailsAll(req, res) {
-
   const url = req.url_;
 
   // if(!info){
@@ -20,17 +19,9 @@ export async function videoDetailsAll(req, res) {
   // }
 
   if (url) {
-
     //* If the request contain a request url
     try {
-      
-      
-        const info = await getInfo(url);
-
-
-
-       console.log(`This Isfo --> ${info}`)
-    
+      const info = await getInfo(url);
 
       const response = {
         ...(await getVideoDetails(info)),
@@ -39,30 +30,29 @@ export async function videoDetailsAll(req, res) {
       };
 
       console.log("[ Requested '/youtube-video' ]: ", url);
-  
-      res.status(200).json({status:"Success",response})
 
+      res.status(200).json({ status: "SUCCESS", response });
     } catch (error) {
-      if(error.message.toString() === `No video id found: ${url}`){
-          res.status(404).json({status:"Failed", message:'Please Enter A Valid Link'})
-      }else if(error.message.toString() === `Not a YouTube domain`){
-          res.status(400).json({status:"Failed", message:`Please Enter A Youtube Link`})
-      }else{
-         res.status(500).json({status:"Failed", message:`Server Error ${error.message}`})
+      if (error.message.toString() === `No video id found: ${url}`) {
+        res
+          .status(404)
+          .json({ status: "FAILED", message: "Please Enter A Valid Link" });
+      } else if (error.message.toString() === `Not a YouTube domain`) {
+        res
+          .status(400)
+          .json({ status: "FAILED", message: `Please Enter A Youtube Link` });
+      } else {
+        res
+          .status(500)
+          .json({ status: "FAILED", message: `Server Error ${error.message}` });
       }
     }
   } else {
-    res.status(422).json({status:"Failed", message:"Please Enter A Video Url Link"})
+    res
+      .status(422)
+      .json({ status: "FAILED", message: "Please Enter A Video Url Link" });
   }
 }
-
-
-
-
-
-
-
-
 
 /*
     This controller function sends only the details of video
@@ -84,7 +74,9 @@ export async function videoDetails(req, res) {
 
       res.send(response);
     } catch (error) {
-      res.status(500).json({status:"FAILED", message:`Server Error ${error.message}`})
+      res
+        .status(500)
+        .json({ status: "FAILED", message: `Server Error ${error.message}` });
       // res.send({ status: "FAILED", message: error.message });
     }
   } else {
