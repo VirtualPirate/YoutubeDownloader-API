@@ -1,10 +1,10 @@
 import * as cheerio from "cheerio";
 import puppeteer from "puppeteer";
 
-async function getHTML(url) {
-  // Launch a headless browser instance
-  const browser = await puppeteer.launch();
+// Launch a headless browser instance
+const browser = await puppeteer.launch();
 
+async function getHTML(url) {
   // Create a new page
   const page = await browser.newPage();
 
@@ -18,7 +18,8 @@ async function getHTML(url) {
   const html = await page.content();
 
   // Close the browser
-  await browser.close();
+  await page.close();
+  // await browser.close();
 
   // Return the HTML content
   // console.log(html);
@@ -37,5 +38,9 @@ const getReelVideo = async (url) => {
   // returns the videoString
   return videoString;
 };
+
+export async function closeBrowser() {
+  await browser.close();
+}
 
 export default getReelVideo;
