@@ -4,6 +4,7 @@ import colors from "colors";
 import morgan from "morgan";
 // import https from "https";
 // import fs from "fs";
+import getReelVideo from "./parsers/instagram-reel.parser.mjs";
 
 import YoutubeVideoRouter from "./routes/youtube-video.route.mjs";
 import InstagramReelRouter from "./routes/instagram-reel.route.mjs";
@@ -51,3 +52,7 @@ app.use("/instagram-reel", InstagramReelRouter);
 app.listen(PORT, () => {
   console.log(`Server Running at http://localhost:${PORT}`.bgCyan.bgGreen);
 });
+
+// getReelVideo("https://www.instagram.com/p/CsBbYqrsoXS/").then((data) => {
+//   console.log("data => ", data);
+// });
