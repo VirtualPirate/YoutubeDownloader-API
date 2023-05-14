@@ -2,7 +2,7 @@ import * as cheerio from "cheerio";
 import puppeteer from "puppeteer";
 
 // Launch a headless browser instance
-const browser = await puppeteer.launch();
+const browser = await puppeteer.launch({ headless: "new" });
 
 async function getHTML(url) {
   // Create a new page
@@ -33,10 +33,10 @@ const getReelVideo = async (url) => {
   const $ = cheerio.load(html);
 
   // searches the html for the videoString
-  const videoString = $("video").attr("src");
+  const videoDirectLink = $("video").attr("src");
 
   // returns the videoString
-  return videoString;
+  return videoDirectLink;
 };
 
 export async function closeBrowser() {
