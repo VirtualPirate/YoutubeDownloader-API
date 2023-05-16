@@ -3,7 +3,7 @@ import {
   getVideoDetails,
   getVideoLinks,
   getAudioLinks,
-} from "../youtube-video-info.mjs";
+} from "../parsers/youtube-video-parser.mjs";
 
 const FAIL_NO_URL = {
   status: "FAILED",
