@@ -2,9 +2,6 @@ import express from "express";
 import cors from "cors";
 import colors from "colors";
 import morgan from "morgan";
-// import https from "https";
-// import fs from "fs";
-import getReelVideo from "./parsers/instagram-reel.parser.mjs";
 
 import YoutubeVideoRouter from "./routes/youtube-video.route.mjs";
 import InstagramReelRouter from "./routes/instagram-reel.route.mjs";

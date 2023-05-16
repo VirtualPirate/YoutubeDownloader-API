@@ -1,4 +1,3 @@
-import getReelVideo from "../parsers/instagram-reel.parser.mjs";
 import { getReelInfo } from "../parsers/instagram-reel.parser.mjs";
 
 export async function reelDownloadUrl(req, res) {
