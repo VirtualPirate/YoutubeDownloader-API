@@ -6,6 +6,7 @@ export async function reelDownloadUrl(req, res) {
     const reelInfo = await getReelInfo(url);
     res.status(200).json({ status: "SUCCESS", response: reelInfo });
   } catch (error) {
+    console.log(error);
     res.status(500).json({ status: "FAILED", response: null });
   }
 }
