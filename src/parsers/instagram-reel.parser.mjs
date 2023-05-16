@@ -3,7 +3,7 @@ import * as cheerio from "cheerio";
 
 export async function getReelInfo(url) {
   // Get the raw HTML
-  const rawHTML = (await axios.get(url)).data;
+  const rawHTML = (await axios.get(url, { maxRedirects: 0 })).data;
 
   // calls cheerio to process the html received
   const $ = cheerio.load(rawHTML);
