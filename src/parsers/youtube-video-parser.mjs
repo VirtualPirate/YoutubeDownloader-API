@@ -1,4 +1,4 @@
-import ytdl from "ytdl-core";
+import ytdl from "@distube/ytdl-core";
 
 export async function getInfo(id) {
   return await ytdl.getInfo(id);
